@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "572620799775",
+    "firebase_url": "https://ticketingapp-a5a9f.firebaseio.com",
+    "project_id": "ticketingapp-a5a9f",
+    "storage_bucket": "ticketingapp-a5a9f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:572620799775:android:18a46a0d597cd44fe87a2a",
+        "android_client_info": {
+          "package_name": "com.example.ts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "572620799775-cec45k5j9bkfj25uq3i5tduva1vttsqs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ts",
+            "certificate_hash": "286091b450dbde2b1efb0a3aef00033ba5c3cddc"
+          }
+        },
+        {
+          "client_id": "572620799775-ls9opvu31seu7oih73ejn5fu6hk2au1k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFv8LyYyXgwh33306B9G1wab4D4g6XFxw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "572620799775-ls9opvu31seu7oih73ejn5fu6hk2au1k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
