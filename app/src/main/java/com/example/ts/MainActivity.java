@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     Spinner spinnerGender, spinnerPassengerType;
     Button buttonSignUp;
 
-//    FirebaseDatabase database;
     DatabaseReference databaseTicketing;
 
     @Override
@@ -57,15 +56,23 @@ public class MainActivity extends AppCompatActivity {
         String gender = spinnerGender.getSelectedItem().toString();
         String passengerType = spinnerPassengerType.getSelectedItem().toString();
 
-        if(!TextUtils.isEmpty(name) || !TextUtils.isEmpty(address)){
+//        if(){
+//            Toast.makeText(this, "Username exists", Toast.LENGTH_LONG).show();
+//        }
+
+        if(!TextUtils.isEmpty(name) && !TextUtils.isEmpty(address) && !TextUtils.isEmpty(phone)
+                && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(gender) && !TextUtils.isEmpty(passengerType)) {
 
             Passenger passenger = new Passenger(name,address,phone,email,gender,passengerType);
 
-            databaseTicketing.setValue(passenger);
+            databaseTicketing.child(email).setValue(passenger);
 
             Toast.makeText(this, "Account created successfully", Toast.LENGTH_LONG).show();
+
+//            startActivity();
+
         }else{
-            Toast.makeText(this, "Enter name", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Please fill all the fields", Toast.LENGTH_LONG).show();
         }
 
     }
