@@ -2,6 +2,7 @@ package com.example.ts;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,7 +31,7 @@ public class DistanceActivity extends AppCompatActivity implements AppAsyncTask.
     EditText editTextFrom, editTextTo;
     Button buttonNext;
     TextView textViewResult;
-    String API_KEY = "AIzaSyAxgjwqtHpqj5eEZ_yLmQncLXCI_m2bWYI";
+    String API_KEY = "AIzaSyD9A8WeC2B_PYaXfBIN7cgS5EtwdiPtCVk";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,15 @@ public class DistanceActivity extends AppCompatActivity implements AppAsyncTask.
                 String to = editTextTo.getText().toString();
                 String url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + from + "&destinations=" + to + "&mode=driving&language=fr-FR&avoid=tolls&key=" + API_KEY;
                 new AppAsyncTask(DistanceActivity.this).execute(url);
+
+                Intent intent = new Intent(DistanceActivity.this, AddTravellersActivity.class);
+                DistanceActivity.this.startActivity(intent);
+
+//                Bundle bundle = new Bundle();
+//                bundle.putString("Origin", from);
+//                bundle.putString("Destination", to);
+//                intent.putExtras(bundle);
+//                DistanceActivity.this.startActivity(intent);
             }
         });
     }

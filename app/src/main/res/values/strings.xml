@@ -11,11 +11,13 @@
 
     <string name="app_name">TS</string>
 
-
     <string name="txt_start">From</string>
     <string name="txt_dstn">To</string>
     <string name="txt_btn">Next</string>
     <string name="str_info">Result</string>
 
+    <string name="single">Single Ticket</string>
+    <string name="period">Period Ticket</string>
+    <string name="forSomeone">Buy for someone else</string>
 
 </resources>

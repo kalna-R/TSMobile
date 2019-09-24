@@ -9,18 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TokenTypeActivity"></activity>
-<!--        <activity android:name=".PurchaseTokenActivity" /> -->
-        <!-- <activity android:name=".DistanceActivity"></activity> -->
-         <activity android:name=".QRScannerActivity"></activity>
+        <activity android:name=".TicketTypeActivity"></activity>
+        <activity android:name=".AddTravellersActivity" />
+        <activity android:name=".TokenTypeActivity" /> <!-- <activity android:name=".PurchaseTokenActivity" /> -->
+        <activity android:name=".DistanceActivity" />
+        <activity android:name=".QRScannerActivity" />
         <activity android:name=".LoginActivity" />
-        <!-- <activity android:name=".MainActivity"> -->
-        <!-- <intent-filter> -->
+        <activity android:name=".MainActivity" /> <!-- <intent-filter> -->
         <!-- <action android:name="android.intent.action.MAIN" /> -->
         <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
         <!-- </intent-filter> -->
         <!-- </activity> -->
-        <activity android:name=".DistanceActivity">
+        <activity android:name=".PurchaseTokenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
