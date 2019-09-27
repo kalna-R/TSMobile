@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,6 +35,18 @@ public class AppAsyncTask extends AsyncTask<String, Void, String> {
         progressDialog.setMessage("Loading");
         progressDialog.setCancelable(false);
         progressDialog.show();
+    }
+
+    @Override
+    protected void onPostExecute(String aDouble) {
+        super.onPostExecute(aDouble);
+        if(aDouble!=null)
+        {
+            result.setDouble(aDouble);
+            progressDialog.dismiss();
+        }
+        else
+            Toast.makeText(context, "Error4!Please Try Again wiht proper values", Toast.LENGTH_SHORT).show();
     }
 
     @Override

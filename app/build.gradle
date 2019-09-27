@@ -35,7 +35,6 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
 
     implementation 'com.github.florent37:singledateandtimepicker:2.1.5'
-//    implementation 'com.github.florent37:SingleDateAndTimePicker:v2.0.4'
 
 
 }

@@ -2,14 +2,14 @@ package com.example.ts;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import static android.util.Log.println;
 
 public class AddTravellersActivity extends AppCompatActivity {
 
@@ -21,6 +21,8 @@ public class AddTravellersActivity extends AppCompatActivity {
     private static int adults = 0;
     private static int seniors = 0;
     private static int children = 0;
+
+    SharedPreferences sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,15 +45,15 @@ public class AddTravellersActivity extends AppCompatActivity {
         seniorTextView = (TextView)findViewById(R.id.noOfSeniors);
         childTextView = (TextView)findViewById(R.id.noOfChildren);
 
-        nextBtn = (Button)findViewById(R.id.nextBtn);
+        nextBtn = (Button)findViewById(R.id.totalNextButton);
 
         //Get the bundle
         Bundle bundle = getIntent().getExtras();
 
         //Extract the data…
-        String from = bundle.getString("Origin");
-        String to = bundle.getString("Destination");
-        String dist = bundle.getString("Distance");
+        final String from = bundle.getString("Origin");
+        final String to = bundle.getString("Destination");
+        final String dist = bundle.getString("Distance");
 
         fromTextView.setText(from);
         toTextView.setText(to);
@@ -111,12 +113,27 @@ public class AddTravellersActivity extends AppCompatActivity {
             }
         });
 
+        // Create object of SharedPreferences.
+        sharedPref = getApplicationContext().getSharedPreferences("Pref", Context.MODE_PRIVATE);
+
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //get Editor
+                SharedPreferences.Editor editor = sharedPref.edit();
+                //put value
+                editor.putString("Adults", String.valueOf(adults));
+                editor.putString("Seniors", String.valueOf(seniors));
+                editor.putString("Children", String.valueOf(children));
+                editor.putString("From", from);
+                editor.putString("To", to);
+                editor.putString("Distance", dist);
+                //commit edits
+                editor.commit();
+
                 Intent intent = new Intent(AddTravellersActivity.this, DateTimeActivity.class);
                 AddTravellersActivity.this.startActivity(intent);
-
             }
         });
 
