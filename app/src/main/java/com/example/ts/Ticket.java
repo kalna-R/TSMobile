@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Ticket {
 
+    private String ticketId;
     private String email;
     private String origin;
     private String destination;
@@ -17,7 +18,7 @@ public class Ticket {
     public Ticket(){}
 
     public Ticket(String ticketId, String origin, String destination, double distance,
-                  int noOfAdults, int noOfChildren, int noOfSeniors, double total, String date) {
+                  int noOfAdults, int noOfChildren, int noOfSeniors, double total, String date, String email) {
         this.origin = origin;
         this.destination = destination;
         this.distance = distance;
@@ -26,6 +27,7 @@ public class Ticket {
         this.children = noOfChildren;
         this.seniors = noOfSeniors;
         this.total = total;
+        this.email = email;
     }
 
     public String getEmail() {

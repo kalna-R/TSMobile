@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,14 +14,12 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class totalAmountActivity extends AppCompatActivity {
 
     Button nextBtn;
-    TextView adultsTextView, seniorTextView, childrenTextView, fromTextView, toTextView, date, time, totalTextView;
+    TextView adultsTextView, seniorTextView, childrenTextView, fromTextView, toTextView, date, time, totalTextView, balanceTextView;
 
     SharedPreferences sharedpreferences;
     DatabaseReference databaseTicketing;
@@ -49,9 +46,10 @@ public class totalAmountActivity extends AppCompatActivity {
         childrenTextView = (TextView)findViewById(R.id.childern);
         fromTextView = (TextView)findViewById(R.id.from);
         toTextView = (TextView)findViewById(R.id.to);
-        date = (TextView)findViewById(R.id.date);
+        date = (TextView)findViewById(R.id.textViewDate);
         time = (TextView)findViewById(R.id.time);
         totalTextView = (TextView)findViewById(R.id.total);
+        balanceTextView = (TextView)findViewById(R.id.balance);
 
         //retrieve no of passengers
         sharedpreferences = getSharedPreferences("Pref", Context.MODE_PRIVATE);
@@ -82,6 +80,9 @@ public class totalAmountActivity extends AppCompatActivity {
 
         Double result = calcTotal();
         totalTextView.setText(String.valueOf(result));
+        double balance = 10000 - result;
+        balanceTextView.setText(String.valueOf(balance));
+
 
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,14 +114,11 @@ public class totalAmountActivity extends AppCompatActivity {
     }
 
     private void createTicket(){
-//        if() {
-
-//            ticketId++;
 
             String id = databaseTicketing.push().getKey();
             Ticket ticket = new Ticket(id, origin, destination, Double.valueOf(distance),
                     Integer.valueOf(noOfSeniors), Integer.valueOf(noOfChildren), Integer.valueOf(noOfAdults),
-                    total, sDate);
+                    total, sDate, "kalna");
 
             databaseTicketing.child(String.valueOf(id)).setValue(ticket);
 

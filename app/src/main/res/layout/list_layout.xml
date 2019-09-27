@@ -5,16 +5,22 @@
 
     <TextView
         android:id="@+id/textViewFrom"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/textViewTo"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textViewDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView" />
 
 </LinearLayout>
+
+<!--    android:textAppearance="@style/TextAppearance.AppCompat.Large"-->

@@ -26,20 +26,18 @@ public class TicketsList extends ArrayAdapter<Ticket> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        //        return super.getView(position, convertView, parent);
-
         LayoutInflater inflater = context.getLayoutInflater();
         View listViewItem = inflater.inflate(R.layout.list_layout, null,true);
 
         TextView textViewFrom = (TextView)listViewItem.findViewById(R.id.textViewFrom);
         TextView textViewTo = (TextView)listViewItem.findViewById(R.id.textViewTo);
-//        TextView textViewDate = (TextView)listViewItem.findViewById(R.id.textViewDate);
+        TextView textViewDate = (TextView)listViewItem.findViewById(R.id.textViewDate);
 
         Ticket ticket = ticketsList.get(position);
 
         textViewFrom.setText(ticket.getOrigin());
         textViewTo.setText(ticket.getDestination());
-//        textViewDate.setText(ticket.getDate());
+        textViewDate.setText(ticket.getDate());
 
         return listViewItem;
     }
