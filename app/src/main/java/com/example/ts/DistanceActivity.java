@@ -26,8 +26,6 @@ import java.util.Iterator;
 
 import javax.net.ssl.HttpsURLConnection;
 
-//public class DistanceActivity extends AppCompatActivity{
-
 public class DistanceActivity extends AppCompatActivity implements AppAsyncTask.Result {
 
     EditText editTextFrom, editTextTo;
@@ -94,8 +92,3 @@ public class DistanceActivity extends AppCompatActivity implements AppAsyncTask.
 
 
 }
-
-//commented buttononnext
-//implements AppAsyncTask.Result done
-//commented setdouble method**done
-//uncomment setdouble method in interface**done

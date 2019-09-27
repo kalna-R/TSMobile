@@ -3,7 +3,9 @@ package com.example.ts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -32,11 +35,23 @@ public class QRScannerActivity extends AppCompatActivity {
 
     String scannedData;
     Button scanBtn;
+    String destination;
+    String start;
+    int count=0;
+
+    SharedPreferences sharedpreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrscanner);
+
+        sharedpreferences = getSharedPreferences("Pref", Context.MODE_PRIVATE);
+
+//        destination = "test";
+//        start = "xxx";
+        destination = sharedpreferences.getString("From", "");
+        start = sharedpreferences.getString("To", "");
 
         final Activity activity =this;
 
@@ -52,6 +67,7 @@ public class QRScannerActivity extends AppCompatActivity {
                 integrator.setCameraId(0);
                 integrator.setBarcodeImageEnabled(false);
                 integrator.initiateScan();
+
             }
         });
     }
@@ -63,6 +79,7 @@ public class QRScannerActivity extends AppCompatActivity {
             scannedData = result.getContents();
             if (scannedData != null) {
                 // Handle scanned data
+
                 new SendRequest().execute();
 
 
@@ -89,7 +106,7 @@ public class QRScannerActivity extends AppCompatActivity {
                 //Passing scanned code as parameter
                 postDataParams.put("sdata",scannedData);
 
-
+                Log.e("***************",scannedData);
                 Log.e("params",postDataParams.toString());
 
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -140,6 +157,33 @@ public class QRScannerActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), result,
                     Toast.LENGTH_LONG).show();
 
+            //////////////////////////////////////////////////////////////////////////////
+
+            Log.e("-------------------",scannedData);
+
+            if(scannedData.equals(destination)) {
+                Intent intent = new Intent(QRScannerActivity.this, ValidActivity.class);
+                QRScannerActivity.this.startActivity(intent);
+
+                Bundle bundle = new Bundle();
+                bundle.putString("qrValue", scannedData);
+                intent.putExtras(bundle);
+
+                count--;
+            }else if(scannedData.equals(start)){
+                Intent intent = new Intent(QRScannerActivity.this, ValidActivity.class);
+                QRScannerActivity.this.startActivity(intent);
+
+                Bundle bundle = new Bundle();
+                bundle.putString("qrValue", scannedData);
+                intent.putExtras(bundle);
+
+                count++;
+            }else
+                {
+                Intent intent = new Intent(QRScannerActivity.this, InvalidActivity.class);
+                QRScannerActivity.this.startActivity(intent);
+            }
         }
     }
 
@@ -161,7 +205,7 @@ public class QRScannerActivity extends AppCompatActivity {
                 result.append("&");
 
             result.append(URLEncoder.encode(key, "UTF-8"));
-            result.append("=");
+            //result.append("=");
             result.append(URLEncoder.encode(value.toString(), "UTF-8"));
 
         }

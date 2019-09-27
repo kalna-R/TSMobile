@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         if(!TextUtils.isEmpty(name) && !TextUtils.isEmpty(address) && !TextUtils.isEmpty(phone)
                 && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(gender) && !TextUtils.isEmpty(passengerType)) {
 
-            Passenger passenger = new Passenger(name,address,phone,email,gender,passengerType);
+            Passenger passenger = new Passenger(name, address, phone, email, gender, passengerType);
 
             databaseTicketing.child(email).setValue(passenger);
 
