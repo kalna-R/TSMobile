@@ -8,14 +8,16 @@
 
     <Button
         android:id="@+id/totalNextButton"
-        android:layout_width="wrap_content"
+        android:layout_width="409dp"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
         android:text="Next"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.973" />
 
     <LinearLayout
         android:layout_width="241dp"
@@ -34,19 +36,19 @@
             android:layout_weight="1"
             android:text="--" />
 
-        <TextView
-            android:id="@+id/noOfChildren"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="00" />
-
         <Button
             android:id="@+id/increaseChildBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="+" />
+
+        <TextView
+            android:id="@+id/noOfChildren"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="00" />
 
     </LinearLayout>
 
@@ -68,19 +70,19 @@
             android:layout_weight="1"
             android:text="--" />
 
-        <TextView
-            android:id="@+id/noOfSeniors"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="00" />
-
         <Button
             android:id="@+id/increaseSeniorBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="+" />
+
+        <TextView
+            android:id="@+id/noOfSeniors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="00" />
 
     </LinearLayout>
 
@@ -102,13 +104,6 @@
             android:layout_weight="1"
             android:text="--" />
 
-        <TextView
-            android:id="@+id/noOfAdults"
-            android:layout_width="27dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="00" />
-
         <Button
             android:id="@+id/increaseAdultBtn"
             android:layout_width="wrap_content"
@@ -116,14 +111,22 @@
             android:layout_weight="1"
             android:text="+" />
 
+        <TextView
+            android:id="@+id/noOfAdults"
+            android:layout_width="27dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="00" />
+
     </LinearLayout>
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="51dp"
+        android:layout_height="22dp"
         android:layout_marginTop="96dp"
         android:text="@string/txt_start"
+        android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/from"
         app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
@@ -131,10 +134,11 @@
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="41dp"
+        android:layout_height="21dp"
         android:layout_marginTop="48dp"
         android:text="@string/txt_dstn"
+        android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/to"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -145,7 +149,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="244dp"
         android:text="Distance"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -168,5 +174,18 @@
         android:layout_marginTop="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/from" />
+
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose no of Passengers"
+        android:textColor="#3F51B5"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

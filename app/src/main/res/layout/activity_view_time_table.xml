@@ -31,7 +31,9 @@
             android:layout_marginRight="170dp"
             android:layout_marginStart="151dp"
             android:layout_marginTop="56dp"
-            android:text="Add Bus" />
+            android:background="@color/colorPrimary"
+            android:text="Add Bus"
+            android:textColor="@android:color/white" />
 
         <ListView
             android:id="@+id/listViewBuses"
