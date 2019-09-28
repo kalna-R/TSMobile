@@ -21,7 +21,7 @@ import java.util.List;
 
 public class PurchaseTokenActivity extends AppCompatActivity {
 
-    Button buyBtn, qrbtn, profile, pcount;
+    Button buyBtn, qrbtn, profile, pcount, qrbtn2, timeTableBtn;
 
     ListView listViewTickets;
 
@@ -38,8 +38,10 @@ public class PurchaseTokenActivity extends AppCompatActivity {
 
         buyBtn = (Button)findViewById(R.id.buyTokenBtn);
         qrbtn = (Button)findViewById(R.id.qrbtn);
+        qrbtn2 = (Button)findViewById(R.id.qrbtn2);
         profile = (Button)findViewById(R.id.myprofile);
         pcount = (Button)findViewById(R.id.pcount);
+        timeTableBtn = (Button)findViewById(R.id.timeTable);
 
         listViewTickets = (ListView)findViewById(R.id.listViewTickets);
 
@@ -49,6 +51,15 @@ public class PurchaseTokenActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(PurchaseTokenActivity.this, TokenTypeActivity.class);
+                PurchaseTokenActivity.this.startActivity(intent);
+
+            }
+        });
+
+        qrbtn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PurchaseTokenActivity.this, QRScannerActivity.class);
                 PurchaseTokenActivity.this.startActivity(intent);
 
             }
@@ -78,6 +89,14 @@ public class PurchaseTokenActivity extends AppCompatActivity {
                 Intent intent = new Intent(PurchaseTokenActivity.this, PassengerCountActivity.class);
                 PurchaseTokenActivity.this.startActivity(intent);
 
+            }
+        });
+
+        timeTableBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PurchaseTokenActivity.this, TimeTableActivity.class);
+                PurchaseTokenActivity.this.startActivity(intent);
             }
         });
     }

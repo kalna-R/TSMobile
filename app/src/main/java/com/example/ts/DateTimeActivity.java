@@ -15,9 +15,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 
-import com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker;
-import com.github.florent37.singledateandtimepicker.dialog.SingleDateAndTimePickerDialog;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -63,8 +60,6 @@ public class DateTimeActivity extends AppCompatActivity implements View.OnClickL
                 DateTimeActivity.this.startActivity(intent);
             }
         });
-
-
     }
 
     @Override

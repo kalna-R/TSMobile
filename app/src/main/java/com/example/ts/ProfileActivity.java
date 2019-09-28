@@ -3,8 +3,12 @@ package com.example.ts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,6 +26,10 @@ public class ProfileActivity extends AppCompatActivity {
 
     List<Ticket> ticketList;
 
+//    SharedPreferences sharedpreferences;
+//    TextView balanceTextView;
+//    DatabaseReference databaseTicketing;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +39,11 @@ public class ProfileActivity extends AppCompatActivity {
 
         listViewTickets = (ListView)findViewById(R.id.listViewTickets);
         ticketList = new ArrayList<>();
+
+//        balanceTextView = (TextView)findViewById(R.id.balance);
+//        databaseTicketing = FirebaseDatabase.getInstance().getReference("ticket");
+//        sharedpreferences = getSharedPreferences("Pref", Context.MODE_PRIVATE);
+//        balanceTextView.setText(sharedpreferences.getString("Balance", ""));
     }
 
     @Override

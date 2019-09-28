@@ -47,7 +47,7 @@ public class totalAmountActivity extends AppCompatActivity {
         fromTextView = (TextView)findViewById(R.id.from);
         toTextView = (TextView)findViewById(R.id.to);
         date = (TextView)findViewById(R.id.textViewDate);
-        time = (TextView)findViewById(R.id.time);
+        time = (TextView)findViewById(R.id.timeTextView);
         totalTextView = (TextView)findViewById(R.id.total);
         balanceTextView = (TextView)findViewById(R.id.balance);
 
@@ -82,6 +82,10 @@ public class totalAmountActivity extends AppCompatActivity {
         totalTextView.setText(String.valueOf(result));
         double balance = 10000 - result;
         balanceTextView.setText(String.valueOf(balance));
+
+//        SharedPreferences.Editor editor = sharedpreferences.edit();
+//        editor.putString("Balance", String.valueOf(balance));
+//        editor.commit();
 
 
         nextBtn.setOnClickListener(new View.OnClickListener() {

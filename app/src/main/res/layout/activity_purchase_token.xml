@@ -7,9 +7,21 @@
     tools:context=".PurchaseTokenActivity">
 
     <Button
-        android:id="@+id/pcount"
+        android:id="@+id/qrbtn2"
         android:layout_width="175dp"
         android:layout_height="62dp"
+        android:text="CheckIn"
+        app:layout_constraintBottom_toTopOf="@+id/buyTokenBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.101"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.939" />
+
+    <Button
+        android:id="@+id/pcount"
+        android:layout_width="105dp"
+        android:layout_height="43dp"
         android:text="Passenger Count"
         app:layout_constraintBottom_toTopOf="@+id/buyTokenBtn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,8 +32,8 @@
 
     <Button
         android:id="@+id/myprofile"
-        android:layout_width="175dp"
-        android:layout_height="62dp"
+        android:layout_width="78dp"
+        android:layout_height="51dp"
         android:text="My Profile"
         app:layout_constraintBottom_toTopOf="@+id/buyTokenBtn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,16 +54,33 @@
 
     <Button
         android:id="@+id/qrbtn"
-        android:layout_width="395dp"
-        android:layout_height="70dp"
-        android:text="Scan QR Code"
+        android:layout_width="175dp"
+        android:layout_height="62dp"
+        android:text="CheckOut"
         app:layout_constraintBottom_toTopOf="@+id/buyTokenBtn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.932"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.943" />
+        app:layout_constraintVertical_bias="0.94" />
+
+    <Button
+        android:id="@+id/timeTable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginStart="100dp"
+        android:text="Time Table"
+        app:layout_constraintBottom_toTopOf="@+id/qrbtn2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/pcount"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/myprofile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="415dp"
         android:layout_height="403dp"
         android:layout_marginBottom="40dp"
