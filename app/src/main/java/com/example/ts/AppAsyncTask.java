@@ -46,7 +46,7 @@ public class AppAsyncTask extends AsyncTask<String, Void, String> {
             progressDialog.dismiss();
         }
         else
-            Toast.makeText(context, "Error4!Please Try Again wiht proper values", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Error4! Please Try Again with proper values", Toast.LENGTH_SHORT).show();
     }
 
     @Override

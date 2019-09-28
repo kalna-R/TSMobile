@@ -81,9 +81,9 @@ public class DistanceActivity extends AppCompatActivity implements AppAsyncTask.
 
     @Override
     public void setDouble(String result){
-        String res[]=result.split(",");
+        String res[] = result.split(",");
         Log.d("dsdgdafhgdfha",result);
-        Double min=Double.parseDouble(res[0])/60;
+        Double min = Double.parseDouble(res[0])/60;
 //        int dist=Integer.parseInt(res[1])/1000;
         dist = Integer.parseInt(res[1])/1000;
 //        tv_result1.setText("Duration= " + (int) (min / 60) + " hr " + (int) (min % 60) + " mins");

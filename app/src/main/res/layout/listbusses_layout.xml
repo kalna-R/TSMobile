@@ -4,21 +4,26 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/textViewRoute11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <TextView
         android:id="@+id/textViewFrom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/textViewTo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
 
-    <TextView
-        android:id="@+id/textViewRoute11"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:text="TextView" />
 
     <TextView
