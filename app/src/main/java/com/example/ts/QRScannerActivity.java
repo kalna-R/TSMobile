@@ -37,7 +37,7 @@ public class QRScannerActivity extends AppCompatActivity {
     Button scanBtn;
     String destination;
     String start;
-    int count=0;
+    int count;
 
     SharedPreferences sharedpreferences;
 
@@ -50,8 +50,8 @@ public class QRScannerActivity extends AppCompatActivity {
 
 //        destination = "test";
 //        start = "xxx";
-        destination = sharedpreferences.getString("From", "");
-        start = sharedpreferences.getString("To", "");
+        destination = sharedpreferences.getString("To", "");
+        start = sharedpreferences.getString("From", "");
 
         final Activity activity =this;
 
@@ -67,7 +67,6 @@ public class QRScannerActivity extends AppCompatActivity {
                 integrator.setCameraId(0);
                 integrator.setBarcodeImageEnabled(false);
                 integrator.initiateScan();
-
             }
         });
     }
@@ -161,6 +160,10 @@ public class QRScannerActivity extends AppCompatActivity {
 
             Log.e("-------------------",scannedData);
 
+            Log.d("333333333333333333333", String.valueOf(count));
+
+            count = 0;
+
             if(scannedData.equals(destination)) {
                 Intent intent = new Intent(QRScannerActivity.this, ValidActivity.class);
                 QRScannerActivity.this.startActivity(intent);
@@ -184,6 +187,15 @@ public class QRScannerActivity extends AppCompatActivity {
                 Intent intent = new Intent(QRScannerActivity.this, InvalidActivity.class);
                 QRScannerActivity.this.startActivity(intent);
             }
+
+            //create shared variables
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            //put value
+            editor.putString("count", String.valueOf(count));
+
+            editor.commit();
+
+
         }
     }
 

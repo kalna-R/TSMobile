@@ -26,8 +26,11 @@ public class ProfileActivity extends AppCompatActivity {
 
     List<Ticket> ticketList;
 
-//    SharedPreferences sharedpreferences;
-//    TextView balanceTextView;
+    String name, balance, contact;
+
+    SharedPreferences sharedpreferences;
+    TextView nameTextView, balanceTextView, contactTextView;
+
 //    DatabaseReference databaseTicketing;
 
     @Override
@@ -40,17 +43,32 @@ public class ProfileActivity extends AppCompatActivity {
         listViewTickets = (ListView)findViewById(R.id.listViewTickets);
         ticketList = new ArrayList<>();
 
-//        balanceTextView = (TextView)findViewById(R.id.balance);
+        balanceTextView = (TextView)findViewById(R.id.balance);
+        nameTextView = (TextView)findViewById(R.id.name);
+//        contactTextView = (TextView)findViewById(R.id.contact);
+
 //        databaseTicketing = FirebaseDatabase.getInstance().getReference("ticket");
 //        sharedpreferences = getSharedPreferences("Pref", Context.MODE_PRIVATE);
 //        balanceTextView.setText(sharedpreferences.getString("Balance", ""));
+
+        sharedpreferences = getSharedPreferences("Pref", Context.MODE_PRIVATE);
+
+        name = sharedpreferences.getString("user", "");
+        balance = sharedpreferences.getString("Balance", "");
+//        noOfChildren = sharedpreferences.getString("Seniors", "");
+//        distance = sharedpreferences.getString("Distance", "");
+
+        balanceTextView.setText(balance);
+        nameTextView.setText(name);
+//        contactTextView.setText(contact);
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        databaseReference.orderByChild("email").equalTo("vimanga").addValueEventListener(new ValueEventListener() {
+        databaseReference.orderByChild("email").equalTo(sharedpreferences.getString("user", "")).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 

@@ -15,10 +15,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
+        <Button
+            android:id="@+id/addBusBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/listViewBuses"
+            android:layout_marginBottom="57dp"
+            android:layout_marginEnd="170dp"
+            android:layout_marginLeft="151dp"
+            android:layout_marginRight="170dp"
+            android:layout_marginStart="151dp"
+            android:layout_marginTop="56dp"
+            android:text="Add Bus" />
+
         <ListView
             android:id="@+id/listViewBuses"
-            android:layout_width="350dp"
-            android:layout_height="611dp"
+            android:layout_width="348dp"
+            android:layout_height="518dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"

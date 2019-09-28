@@ -3,7 +3,12 @@ package com.example.ts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -20,7 +25,11 @@ public class ViewTimeTableActivity extends AppCompatActivity {
     ListView listViewBuses;
     List<Bus> busList;
 
+    SharedPreferences sharedpreferences;
+
     DatabaseReference databaseReference;
+
+    Button addBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +40,33 @@ public class ViewTimeTableActivity extends AppCompatActivity {
 
         listViewBuses = (ListView)findViewById(R.id.listViewBuses);
         busList = new ArrayList<>();
+
+        addBtn = (Button)findViewById(R.id.addBusBtn);
+
+        sharedpreferences = getSharedPreferences("Pref", Context.MODE_PRIVATE);
+        String usertype;
+        String test = "admin@gmail.com";
+        usertype = sharedpreferences.getString("user", "");
+
+        addBtn.setVisibility(View.GONE);
+        if(usertype.equals(test))
+        {
+            addBtn.setVisibility(View.VISIBLE);
+
+        }
+        else
+        {
+
+            addBtn.setVisibility(View.GONE);
+        }
+
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewTimeTableActivity.this, TimeTableActivity.class);
+                ViewTimeTableActivity.this.startActivity(intent);
+            }
+        });
     }
 
     @Override

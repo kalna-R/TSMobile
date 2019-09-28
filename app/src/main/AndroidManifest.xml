@@ -17,10 +17,11 @@
         <activity android:name=".DateTimeActivity" />
         <activity android:name=".TicketTypeActivity" />
         <activity android:name=".AddTravellersActivity" />
-        <activity android:name=".TokenTypeActivity" /> <!-- <activity android:name=".PurchaseTokenActivity" /> -->
+        <activity android:name=".TokenTypeActivity" />
+         <activity android:name=".PurchaseTokenActivity" />
         <activity android:name=".DistanceActivity" />
         <activity android:name=".QRScannerActivity" />
-        <activity android:name=".LoginActivity" />
+<!--        <activity android:name=".LoginActivity" />-->
         <activity android:name=".MainActivity" /> <!-- <intent-filter> -->
         <activity android:name=".ValidActivity" />
         <activity android:name=".InvalidActivity" />
@@ -30,7 +31,7 @@
         <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
         <!-- </intent-filter> -->
         <!-- </activity> -->
-        <activity android:name=".PurchaseTokenActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -83,9 +83,9 @@ public class totalAmountActivity extends AppCompatActivity {
         double balance = 10000 - result;
         balanceTextView.setText(String.valueOf(balance));
 
-//        SharedPreferences.Editor editor = sharedpreferences.edit();
-//        editor.putString("Balance", String.valueOf(balance));
-//        editor.commit();
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString("Balance", String.valueOf(balance));
+        editor.commit();
 
 
         nextBtn.setOnClickListener(new View.OnClickListener() {
@@ -122,13 +122,13 @@ public class totalAmountActivity extends AppCompatActivity {
             String id = databaseTicketing.push().getKey();
             Ticket ticket = new Ticket(id, origin, destination, Double.valueOf(distance),
                     Integer.valueOf(noOfSeniors), Integer.valueOf(noOfChildren), Integer.valueOf(noOfAdults),
-                    total, sDate, "kalna");
+                    total, sDate, sharedpreferences.getString("user", ""));
 
             databaseTicketing.child(String.valueOf(id)).setValue(ticket);
 
             Toast.makeText(this, "Ticket created successfully", Toast.LENGTH_LONG).show();
 
-            Intent intent = new Intent(totalAmountActivity.this, QRScannerActivity.class);
+            Intent intent = new Intent(totalAmountActivity.this, PurchaseTokenActivity.class);
             totalAmountActivity.this.startActivity(intent);
 
 //        }else{

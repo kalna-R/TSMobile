@@ -3,7 +3,9 @@ package com.example.ts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -28,13 +30,15 @@ public class PurchaseTokenActivity extends AppCompatActivity {
     List<Ticket> ticketList;
 
     DatabaseReference databaseReference;
+    SharedPreferences sharedpreferences;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_purchase_token);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("ticket");
+        databaseReference = FirebaseDatabase.getInstance().getReference("").child("ticket");
 
         buyBtn = (Button)findViewById(R.id.buyTokenBtn);
         qrbtn = (Button)findViewById(R.id.qrbtn);
@@ -46,6 +50,24 @@ public class PurchaseTokenActivity extends AppCompatActivity {
         listViewTickets = (ListView)findViewById(R.id.listViewTickets);
 
         ticketList = new ArrayList<>();
+
+        sharedpreferences = getSharedPreferences("Pref", Context.MODE_PRIVATE);
+        String usertype;
+        String test = "admin@gmail.com";
+        usertype = sharedpreferences.getString("user", "");
+
+        pcount.setVisibility(View.GONE);
+        if(usertype.equals(test))
+        {
+            pcount.setVisibility(View.VISIBLE);
+
+        }
+        else
+        {
+
+            pcount.setVisibility(View.GONE);
+        }
+
 
         buyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +117,7 @@ public class PurchaseTokenActivity extends AppCompatActivity {
         timeTableBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PurchaseTokenActivity.this, TimeTableActivity.class);
+                Intent intent = new Intent(PurchaseTokenActivity.this, ViewTimeTableActivity.class);
                 PurchaseTokenActivity.this.startActivity(intent);
             }
         });
@@ -106,7 +128,7 @@ public class PurchaseTokenActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.orderByChild("email").equalTo(sharedpreferences.getString("user", "")).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
