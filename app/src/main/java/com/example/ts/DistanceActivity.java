@@ -29,9 +29,11 @@ import javax.net.ssl.HttpsURLConnection;
 public class DistanceActivity extends AppCompatActivity implements AppAsyncTask.Result {
 
     EditText editTextFrom, editTextTo;
-    Button buttonNext;
+    Button buttonNext, buttonCalc;
     TextView textViewResult;
-    String API_KEY = "AIzaSyD9A8WeC2B_PYaXfBIN7cgS5EtwdiPtCVk";
+    String API_KEY = "AIzaSyDHgceUcT49xCF4YmZwoUdxW5emOki15SA";
+
+    int dist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +43,12 @@ public class DistanceActivity extends AppCompatActivity implements AppAsyncTask.
         editTextFrom = (EditText)findViewById(R.id.editText_from);
         editTextTo = (EditText)findViewById(R.id.editText_to);
 
-        buttonNext = (Button)findViewById(R.id.button_get);
+        buttonCalc = (Button)findViewById(R.id.button_get);
+        buttonNext = (Button)findViewById(R.id.button_next);
 
         textViewResult = (TextView)findViewById(R.id.textView_info);
 
-        buttonNext.setOnClickListener(new View.OnClickListener() {
+        buttonCalc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String from = editTextFrom.getText().toString();
@@ -53,24 +56,39 @@ public class DistanceActivity extends AppCompatActivity implements AppAsyncTask.
                 String url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + from + "&destinations=" + to + "&mode=driving&language=fr-FR&avoid=tolls&key=" + API_KEY;
                 new AppAsyncTask(DistanceActivity.this).execute(url);
 
-                Intent intent = new Intent(DistanceActivity.this, AddTravellersActivity.class);
-                DistanceActivity.this.startActivity(intent);
 
-//                Bundle bundle = new Bundle();
-//                bundle.putString("Origin", from);
-//                bundle.putString("Destination", to);
-//                intent.putExtras(bundle);
-//                DistanceActivity.this.startActivity(intent);
+            }
+        });
+
+        buttonNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String from = editTextFrom.getText().toString();
+                String to = editTextTo.getText().toString();
+
+                Intent intent = new Intent(DistanceActivity.this, AddTravellersActivity.class);
+
+                Bundle bundle = new Bundle();
+                bundle.putString("Origin", from);
+                bundle.putString("Destination", to);
+                bundle.putString("Distance", String.valueOf(dist));
+                intent.putExtras(bundle);
+
+                DistanceActivity.this.startActivity(intent);
             }
         });
     }
 
     @Override
     public void setDouble(String result){
-        String res[]=result.split(",");
-        Double min=Double.parseDouble(res[0])/60;
-        int dist=Integer.parseInt(res[1])/1000;
+        String res[] = result.split(",");
+        Log.d("dsdgdafhgdfha",result);
+        Double min = Double.parseDouble(res[0])/60;
+//        int dist=Integer.parseInt(res[1])/1000;
+        dist = Integer.parseInt(res[1])/1000;
 //        tv_result1.setText("Duration= " + (int) (min / 60) + " hr " + (int) (min % 60) + " mins");
         textViewResult.setText("Distance= " + dist + " kilometers");
     }
+
+
 }

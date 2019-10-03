@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,6 +38,18 @@ public class AppAsyncTask extends AsyncTask<String, Void, String> {
     }
 
     @Override
+    protected void onPostExecute(String aDouble) {
+        super.onPostExecute(aDouble);
+        if(aDouble!=null)
+        {
+            result.setDouble(aDouble);
+            progressDialog.dismiss();
+        }
+        else
+            Toast.makeText(context, "Error4! Please Try Again with proper values", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     protected String doInBackground(String... params) {
         try {
             URL url = new URL(params[0]);
@@ -56,19 +69,24 @@ public class AppAsyncTask extends AsyncTask<String, Void, String> {
                 }
                 String json = sb.toString();
                 Log.d("JSON",json);
+
                 JSONObject root = new JSONObject(json);
                 JSONArray array_rows = root.getJSONArray("rows");
                 Log.d("JSON","array_rows:"+array_rows);
+
                 JSONObject object_rows = array_rows.getJSONObject(0);
                 Log.d("JSON","object_rows:"+object_rows);
+
                 JSONArray array_elements = object_rows.getJSONArray("elements");
                 Log.d("JSON","array_elements:"+array_elements);
+
                 JSONObject  object_elements = array_elements.getJSONObject(0);
                 Log.d("JSON","object_elements:"+object_elements);
+
                 JSONObject object_duration = object_elements.getJSONObject("duration");
                 JSONObject object_distance = object_elements.getJSONObject("distance");
-
                 Log.d("JSON","object_duration:"+object_duration);
+
                 return object_duration.getString("value")+","+object_distance.getString("value");
 
             }
@@ -79,7 +97,6 @@ public class AppAsyncTask extends AsyncTask<String, Void, String> {
         } catch (JSONException e) {
             Log.d("error","error3");
         }
-
 
         return null;
 
